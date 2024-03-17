@@ -270,7 +270,7 @@
   .slider-container {
   border: 1px solid gray;
   margin-bottom: 10px;
-  height: 770px;
+  height: auto;
   position: relative;
   width: 90%; /* Set maximum width as needed */
   margin: 0 auto;
@@ -284,8 +284,8 @@
 }
 
 .slider img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .slider-button {
@@ -380,8 +380,8 @@
   background-color: ;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 10px auto; /* Center horizontally and add top margin */
-  width: 370px;
-  height: 510px;
+  width: 90%;
+  height: auto;
   overflow: hidden;
   position: relative;
 }
@@ -391,8 +391,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: block;
   margin: 10px auto; /* Center the image horizontally and vertically */
-  width: 300px;
-  height: 400px;
+  width: 80%;
+  height: auto;
   border: px solid ;
   transition: opacity 0.5s ease;
 }
@@ -400,6 +400,7 @@
 
 .additional-images {
   width: 90%;
+  height: auto;
   margin: 0 auto; /* Align center horizontally */
   padding: 5px 0; /* Adjust spacing around the images */
   box-sizing: border-box;
@@ -471,8 +472,8 @@ header {
     }
 
     .logo {
-      margin-right: auto; /* Push logo to the left */
-      margin-left: 38%; /* Set margin to create space from the left edge */
+      margin-right: 50%; /* Push logo to the left */
+      margin-left: 50%; /* Set margin to create space from the left edge */
     }
 
     .menu-icon {
@@ -487,7 +488,7 @@ header {
   cursor: pointer;
   font-size: 30px;
   display: none;
-  position: relative; /* Add position relative */
+  position:absolute; /* Add position relative */
   left: 20px;
   z-index: 2; /* Set close icon z-index higher than header */
 }
