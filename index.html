@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="অফার❗অফার❗অফার❗ ৫০%✨ডিসকাউন্ট এ পেয়ে যাচ্ছেন মাত্র ৯৯০ টাকায়🎉। সাথে থাকছে ফ্রী হোম ডেলিভারি 🚛। ">
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-TZnDiAua6jiIVHQgPWehLyjeXhU/D2DqBXuTEITJq6c4/DsoebQc5ZPw1qTz4llqZdtufIlwU3RpT8v+fmZjKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<title>Healthy Mart</title>
+<style>
+  
+  body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top:70px;
+            background-color:;
+        }
+ 
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+}
+
+.modal-content p {
+    font-weight: bold;
+}
+
+.ok-btn {
+  display: block; /* Change button to block-level element */
+  margin: 20px auto 5px auto; /* Center the button horizontally with top margin and 5px bottom margin */
+  background-color: green; /* Change button color to green */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Padding */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  font-weight: bold; /* Bold text */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.ok-btn:hover {
+  background-color: darkgreen; /* Darker green color on hover */
+}
+
+
+  /* Styles for form */
+  .container, .order-summary-product {
+    position: relative;
+    height: 110px; /* Same height as product box */
+    width: 90%; /* Same width as product box */
+    border: 2px solid black;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10px;
+    margin: 0 auto 20px; /* Align horizontally in the center */
+  }
+  
+  .radio-btn {
+    margin-right: 5px;
+  }
+
+  .product-img, .order-summary-product-img {
+    height: 80px; /* Same height as product image */
+    width: 80px; /* Same width as product image */
+    margin-right: 10px; /* Add margin between image and product name */
+    border: px solid #000; /* Fix border style */
+    object-fit: cover;
+  }
+  
+  .product-info, .order-summary-product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center product name vertically */
+  }
+
+  .product-name, .order-summary-product-name {
+    font-weight: bold;
+    margin-bottom: 5px; /* Add space below product name */
+  }
+
+  .product-price, .order-summary-product-price,.order-summary-product-total-price{
+    color: green;
+    font-weight: bold;
+  }
+  
+  .order-summary-product-total-price {
+    position: absolute; /* Set position to absolute */
+    top: 50%; /* Adjust top position */
+    right: 10px; /* Adjust right position */
+    transform: translateY(-50%); /* Center vertically */
+    font-weight: bold; /* Bold text */
+}
+
+  .off-price, .order-summary-off-price {
+    text-decoration: line-through;
+    color: red;
+    margin-top: 5px;
+  }
+
+.order-summary {
+    border: 1px solid #000;
+    padding: 20px;
+    width: 90%;
+    margin: 20px auto 0; /* Add margin to the top to create space */
+    display: none;
+    position: relative; /* Change position to relative */
+}
+
+.total-price {
+  margin-top:10px;
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+    font-weight: bold;
+    margin-top: -20px; 
+}
+
+/* Styles for disabled quantity buttons */
+.quantity-btn:disabled {
+    font-size: 12px;
+    padding: 3px 8px;
+    margin: 0 2px;
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+    color: #ccc; /* Light gray color */
+    background-color: #f2f2f2; /* Light gray background */
+}
+
+/* Styles for enabled quantity buttons */
+.quantity-btn:not(:disabled) {
+    font-size: 12px;
+    padding: 3px 8px;
+    margin: 0 2px;
+    cursor: pointer;
+    color: white; /* White text color */
+    background-color:SteelBlue; /* Green background color */
+}
+
+ 
+
+  .order-summary-product-remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+
+  .order-form {
+    border: 0px solid ; /* Fix border style */
+    padding: 20px; /* Increased padding for spacing */
+    width: 90%;
+    margin: 0 auto 20px;
+    border-radius: 0px; /* Rounded corners */
+  }
+
+/* Remove solid line from input boxes */
+.order-form input[type="text"],
+.order-form input[type="tel"],
+.order-form input[type="email"] {
+    border: none; /* Remove border */
+    border: 2px solid #ccc; /* Add bottom border only */
+    width: calc(100% - 10px); /* Full width minus padding */
+    padding: 10px; /* Padding for spacing */
+    margin: 10px 0; /* Vertical spacing */
+    border-radius: 0px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+
+.place-order-btn {
+    margin-top: 20px; /* Adjust margin-top to create space */
+    margin-bottom: 20px; /* Add margin-bottom for space below button */
+    padding-top: 20px;
+    display: block;
+    height: 50px;
+    width: 300px; /* Set button width */
+    margin-left: auto; /* Center align button */
+    margin-right: auto; /* Center align button */
+    background-color: #38938f; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding */
+    font-weight: bold; /* Bold text */
+    font-size: 18px; /* Larger font size */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 0; /* Ensure no border radius */
+}
+
+
+
+
+.shipping-fee {
+    font-weight: bold;
+    margin-top: 10px; 
+    margin-bottom: 5px; 
+    display: block; 
+    text-align: right; 
+}
+
+
+/* FAQ container styling */
+.faq-container {
+    width: 90%;
+    margin: 0 auto; /* Align horizontally center */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* FAQ question styling */
+.faq-question {
+    background-color: ; /* Deep color for question */
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px; /* Set the height of the FAQ question */
+    color: white; /* Text color for question */
+}
+
+/* FAQ answer styling */
+.faq-answer {
+  margin-left:10px;
+  padding-bottom: 5px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease; /* Adjusted transition duration */
+    background-color:; /* Light color for answer */
+    padding: px;
+    color: ; /* Text color for answer */
+}
+
+/* Show class for answer */
+.faq-answer.show {
+    max-height: 300px; /* Adjust the max height according to your content */
+    overflow: visible; /* Show the content when the answer is open */
+    opacity: 1; /* Set opacity to 1 for instant text display */
+}
+
+
+.faq-question i {
+    cursor: pointer;
+}
+
+
+  .slider-container {
+  border: 1px solid gray;
+  margin-bottom: 10px;
+  height: 770px;
+  position: relative;
+  width: 90%; /* Set maximum width as needed */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  position: relative; /* Ensure relative positioning for absolute children */
+}
+
+.slider img {
+  max-width: 100%;
+  height: auto;
+}
+
+.slider-button {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slider-button.prev {
+  left: 10px;
+  background-color: gray;
+}
+
+.slider-button.next {
+  right: 10px;
+  background-color: gray;
+}
+
+.slider-button.prev:hover,
+.slider-button.next:hover {
+  background-color: #00ffff; /* Change color on hover as needed */
+}
+
+.slider {
+  margin-bottom: 0; /* Adjust as needed */
+}
+
+.slider-button {
+  margin-top: 5px; /* Adjust as needed */
+}
+
+
+  
+  .description-box {
+  margin: 0 auto 20px auto; /* Sets top and bottom margin to 0, and left and right margin to auto */
+  width: 80%;
+  height: auto;
+  background-color: PeachPuff; /* Change to your desired background color */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
+  padding: 20px; /* Adjust padding as needed */
+  text-align: center; /* Center-align text */
+}
+
+
+
+.description-box h1 {
+  font-size: 24px; /* Adjust font size as needed */
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.description-box h2 {
+  font-size: 18px; /* Adjust font size as needed */
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+  
+  
+.buy-now {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background-color: #006666;
+  color: white;
+  cursor: pointer;
+  margin: 0 auto 20px; /* Added margin-bottom of 20px */
+  display: block;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+
+.buy-now:hover {
+  background-color: #006666;
+  transform: scale(1.05);
+}
+
+.buy-now:active {
+  transform: scale(0.95);
+}
+  
+  
+  .image-box {
+  border: 5px solid white;
+  border-radius: 10px;
+  background-color: ;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 10px auto; /* Center horizontally and add top margin */
+  width: 370px;
+  height: 510px;
+  overflow: hidden;
+  position: relative;
+}
+
+.main-image {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 10px auto; /* Center the image horizontally and vertically */
+  width: 300px;
+  height: 400px;
+  border: px solid ;
+  transition: opacity 0.5s ease;
+}
+
+
+.additional-images {
+  width: 90%;
+  margin: 0 auto; /* Align center horizontally */
+  padding: 5px 0; /* Adjust spacing around the images */
+  box-sizing: border-box;
+  text-align: center; /* Center align the images */
+}
+
+.additional-images img {
+  display: inline-block; /* Set images to inline-block */
+  margin: 0 3px; /* Add 3px of margin between each image */
+}
+
+  
+.additional-images img {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 70px; /* Adjust width as needed */
+  height: 75px; /* Adjust height as needed */
+  border: px solid ; /* Add border to the additional images */
+  cursor: pointer;
+  transition: opacity 0.5s ease; /* Add transition effect */
+}
+
+  
+  #contact {
+            
+            margin: 5px;
+        }
+
+        #contact h2 {
+            color: black;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+        }
+  
+  
+  
+  
+
+  
+  
+</style>
+
+
+
+<style>
+
+
+header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 50px;
+      width: 100%;
+      display: flex;
+      justify-content: center; /* Center the logo */
+      align-items: center;
+      padding: 10px;
+      background-color:black;
+      color: #fff;
+      z-index: 1; /* Set header z-index to 1 */
+    }
+
+
+    .logo img {
+      width: 80px;
+      height: 70px;
+    }
+
+    .logo {
+      margin-right: auto; /* Push logo to the left */
+      margin-left: 38%; /* Set margin to create space from the left edge */
+    }
+
+    .menu-icon {
+      cursor: pointer;
+      font-size: 30px;
+      position: absolute;
+      left: 20px; /* Adjust the left position */
+      z-index: 2; /* Set menu icon z-index higher than header */
+    }
+
+    .close-icon {
+  cursor: pointer;
+  font-size: 30px;
+  display: none;
+  position: relative; /* Add position relative */
+  left: 20px;
+  z-index: 2; /* Set close icon z-index higher than header */
+}
+
+
+    .menu {
+      position: fixed;
+      margin-top: 0px;
+      right: -250px;
+      width: 200px;
+      height: 50%;
+      border-left:;
+      border-bottom:;
+      background-color: cornsilk;
+      transition: right 0.3s ease;
+      z-index: 3; /* Set menu z-index higher than header */
+    }
+
+    .menu.active {
+      right: 0;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      padding: 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000; /* Changed link color to black for visibility */
+      transition: transform 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      transform: scale(1.2);
+    }
+    
+    /* Overlay styles */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      display: none;
+      z-index: 2; /* Set overlay z-index higher than header */
+    }
+
+
+
+</style>
+
+
+ <meta property="og:image" content="https://github.com/healthymartshop/go/raw/main/badam2.jpg">
+
+
+</head>
+<body>
+  
+  
+  <header>
+  <div class="menu-icon" onclick="toggleMenu()"> <!-- Menu icon -->
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="close-icon" onclick="toggleMenu()"> <!-- Close icon -->
+    <i class="fas fa-times"></i>
+  </div>
+ 
+  <div class="logo">
+    <img src="https://github.com/fbook0/login/raw/main/Sat_9_03_2024_02_17_05.png" alt="Your Logo">
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=61557123184055&mibextid=ZbWKwL">Facebook </a></li>
+      <li><a href="https://wa.me/1776762354">WhatsApp </a></li>
+      <li><a href="#contact"></a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+  
+  
+  
+  <div class="headline">
+    <h1 style="text-align: center; font-size: 24px; padding: 0 10px;">সম্পুর্ন প্রাকৃতিক উপায়ে ওজন বাড়ান</h1>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    
+    <p id="modal-message"></p>
+    
+    <button class="ok-btn" onclick="closeModal()">OK</button>
+  </div>
+</div>
+  
+  
+  <div class="image-box">
+  <img class="main-image" src="https://github.com/healthymartshop/go/raw/main/badam2.jpg" alt="First Image" id="mainImage">
+  <div class="additional-images">
+    <img src="https://github.com/healthymartshop/go/raw/main/milk4.jpg" alt="Second Image" class="thumbnail" onclick="changeImage(this)">
+    <img src="https://github.com/healthymartshop/go/raw/main/milk3.jpg" alt="Third Image" class="thumbnail" onclick="changeImage(this)">
+    <img src="https://github.com/healthymartshop/go/raw/main/badam1.jpg" alt="Fourth Image" class="thumbnail" onclick="changeImage(this)">
+    <img src="https://github.com/healthymartshop/go/raw/main/milk5.jpg" alt="Fourth Image" class="thumbnail" onclick="changeImage(this)">
+  </div>
+</div>
+
+  
+  <div style="margin-top: 50px;">
+  <h1 style="text-align: center; font-size: 24px; padding: 0 10px;">মিল্ক শেক ও বাদাম শেক মুলত ➤</h1>
+</div>
+
+  
+
+  <div style="margin-top: 30px;">
+  <div style="display: flex; align-items: center; margin: 0 20px 10px 20px;">
+    <div style="font-size: 20px; color: green; margin-right: 10px;">&#10004;</div>
+    <div style="font-size: 18px; font-weight: bold; color: green;">খাবারের রুচি বাড়াবে।</div>
+  </div>
+
+  <div style="display: flex; align-items: center; margin: 0 20px 10px 20px;">
+    <div style="font-size: 20px; color: green; margin-right: 10px;">&#10004;</div>
+    <div style="font-size: 18px; font-weight: bold; color: black;">পরিমিত ঘুম হতে সহায়তা করবে।</div>
+  </div>
+
+  <div style="display: flex; align-items: center; margin: 0 20px 10px 20px;">
+    <div style="font-size: 20px; color: green; margin-right: 10px;">&#10004;</div>
+    <div style="font-size: 18px; font-weight: bold; color: green;">মানসিক প্রশান্তি জোগায়। </div>
+  </div>
+
+  <div style="display: flex; align-items: center; margin: 0 20px 10px 20px;">
+    <div style="font-size: 20px; color: green; margin-right: 10px;">&#10004;</div>
+    <div style="font-size: 18px; font-weight: bold; color: black;">চিকন ও দুর্বল স্বাস্থ্য কে স্থায়ীভাবে সু-স্বাস্থ্য প্রদান করবে।</div>
+  </div>
+
+  <div style="display: flex; align-items: center; margin: 0 20px 10px 20px;">
+    <div style="font-size: 20px; color: green; margin-right: 10px;">&#10004;</div>
+    <div style="font-size: 18px; font-weight: bold; color: green;">রোগ প্রতিরোধ ক্ষমতা বাড়াবে।</div>
+  </div>
+
+  <div style="display: flex; align-items: center; margin: 0 20px 10px 20px;">
+    <div style="font-size: 20px; color: green; margin-right: 10px;">&#10004;</div>
+    <div style="font-size: 18px; font-weight: bold; color: black;">ক্যালসিয়াম এর অভাব পূরণ করবে। </div>
+  </div>
+</div>
+
+  
+  
+  
+<div class="price-container" style="margin-top: 50px; margin-bottom: 50px;">
+  <div class="main-price" style="
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+  ">
+    <h2 style="color: green; font-size: 25px;">ডিসকাউন্ট প্রাইজ এ</h2>
+    ৯৯০ টাকা
+  </div>
+
+  <div class="discounted-price" style="
+    text-align: center;
+    font-size: 20px;
+    color: red;
+    text-decoration: line-through;
+  ">
+    রেগুলার প্রাইজ: ১৯৯০ টাকা
+  </div>
+</div>
+
+  
+  
+  
+  <button class="buy-now">
+    <i class="fas fa-shopping-cart"></i> Buy Now
+</button>
+  
+  
+  <div class="description-box">
+    <h2>পণ্যের বিবরণ</h2>
+  <h1>মিল্ক শেক ও বাদাম শেক</h1>
+   <p>১০০% ন্যাচরাল ও পার্শ্ব প্রতিক্রি'য়াবিহী'ন☘️☘️
+প্রাকৃতিক♻️ উপাদান ♻️ এ তৈরি।🧋🧋
+এতে বাদাম🥜,মধু🍯,শাল দুধ🥛,কোকো পাউডার🥫,চকলেট 🍫,কালোজিরা,,গাজর🥕 মাশরুম 🍄 সহ 59 টি বিভিন্ন উপাদান রয়েছে।।
+✅ শরীরের প্রতিটি অ'ঙ্গের জন্য কাজ করে এবং নিখুঁ'ত স্বাস্থ্য বজায় রাখে।।।</p>
+</div>
+  
+  
+  
+  <h1 style="text-align: center; font-size: 24px; padding: 0 10px;">কাস্টমার রিভিও</h1>
+  
+  <div class="slider-container">
+  <div class="slider">
+    <img src="https://github.com/healthymartshop/go/raw/main/mrevew1.jpeg" alt="revew Image">
+    <img src="https://github.com/healthymartshop/go/raw/main/mrevew2.jpeg" alt="revew Image">
+    <img src="https://github.com/healthymartshop/go/raw/main/mrevew3.jpeg" alt="revew Image">
+    <img src="https://github.com/healthymartshop/go/raw/main/mrevew4.jpeg" alt="revew Image">
+  </div>
+  <button class="slider-button prev" onclick="prevSlide()">❮</button>
+  <button class="slider-button next" onclick="nextSlide()">❯</button>
+</div>
+
+<script src="script.js"></script>
+  
+<div style="margin-top: 30px; margin-bottom: 30px;">
+  <h1 style="text-align: center; font-size: 24px; padding: 5px; border: px solid black; border-radius: 5px; width: 70%; margin: 0 auto;
+    background-color: ;">কিছু প্রশেনর উত্তর</h1>
+</div>
+
+  
+<div class="faq-container" style="background-color: #ffcccc;">
+    <div class="faq-question" style="background-color: #1c4947;" onclick="toggleAnswer(this)">
+        <h3>এক ফাইলে কতদিন যাবে?</h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer" style="background-color: #; font-weight: bold;">
+        <p>১টি ফাইলে  ৪০-৪৫ দিন যাবে</p>
+    </div>
+</div>
+  
+  <div class="faq-container" style="background-color: #dfacae;">
+    <div class="faq-question" style="background-color: #38938f ;" onclick="toggleAnswer(this)">
+        <h3>অর্ডার করার কতদিন পর পাবো ?</h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer" style="background-color: #; font-weight: bold;">
+        <p>ঢাকার ভিতরে ২-৩ কার্যদিবস এবং ঢাকার বাহিরে ৩-৫ কার্যদিবসের মধ্যে পেয়েযাবেন ইনশাআল্লাহ।</p>
+    </div>
+</div>
+  
+  <div class="faq-container" style="background-color: Thistle;">
+    <div class="faq-question" style="background-color: SteelBlue;" onclick="toggleAnswer(this)">
+        <h3>এলিট কর্পোরেশনের অরজিনাল পণ্য কিভাবে চিনবেন ?</h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer" style="background-color: #; font-weight: bold;">
+        <p>১. পণ্য রিসিভ করার আগে অবশ্যই এলিট কর্পোরেশনের একমাত্র ওয়েবসাইট www.elitecorpo.com পণ্যের গায়ে লেখা আছে কিনা দেখে নিবেন।</p>
+২. আপনি যে পণ্য রিসিভ করছেন সে পণ্যের গায়ে এলিট কর্পোরেশনের পক্ষ থেকে সিকিউরিটি কোড দেয়া হবে,এবং স্ক্যানার ও দেওয়া থাকবে।প্রথমে স্ক্যানার টি স্ক্যান করে Www.elitcorpo.com ওয়েবসাইটে যাবেন।এরপর ৮ ডিজিটের কোডটি দিবেন।সাবমিট অফসনে ক্লিক করলে আপনার পণ্যটি অরজিনাল কিনা আপনাকে দেখাবে।মনে রাখবেন কোডটি শুধুমাত্র ১ বার ব্যবহার করা
+      যাবে।২ বার দিবেন না।</p>
+৩. অবশ্যই পণ্যের গায়ে এলিট কর্পোরেশনের ট্রেডমার্ক করার লোগো চেক করে রিসিভ করবেন।</p>
+৪. পণ্যের গায়ে উৎপাদনকারী লাইসেন্স নং আছে কিনা চেক করে নিবেন। লাইসেন্স নং 242/2023।</p>
+৫. কাস্টমাররা পণ্য ক্রয়ের পর এলিট কর্পোরেশন এর ওয়েবসাইটে সাইন আপ করতে পারবেন। এবং সাথে সাথে অভিনন্দন মেসেজ পাবেন।
+
+#কেনাকাটা_হোক_বিশ্বস্ততার_সঙ্গে!</p>
+    </div>
+</div>
+  
+
+<h1 style="text-align: center; font-size: 24px; margin-top: 50px; margin-left: auto; margin-right: auto; border: 5px solid green; width: 50%; color: white; background-color: black;">ORDER FORM</h1>
+
+
+  
+<div class="order-form">
+    
+<form id="orderForm" action="https://script.google.com/macros/s/AKfycbwcHRP3VXrX6SCaBzKdUWDoPQGfl6GzW81X3f21akB9CsxWlF_-DvpSwbxR5g6Fsj_g/exec" method="post">
+  
+   <h4 style="text-align: center; font-size: 23px; padding: 0 10px;"> আইটেম সিলেক্ট করুন  </h4>
+  
+   <div class="container">
+  <input type="radio" class="radio-btn" id="radio1" data-name="Milk Shake" onclick="updateOrderSummary('https://github.com/healthymartshop/go/raw/main/milk6.jpg', 'Milk Shake', 990, 1990)">
+  <img src="https://github.com/healthymartshop/go/raw/main/milk6.jpg" alt="Product Image" class="product-img">
+  <div class="product-info">
+    <span class="product-name">Milk Shake</span>
+    <span class="product-price">৳990.00</span>
+    <span class="off-price">৳1990.00</span>
+    <div>
+      <button class="quantity-btn" onclick="decrementQuantity(event)" disabled>-</button>
+      <span class="quantity" disabled>1</span>
+      <button class="quantity-btn" onclick="incrementQuantity(event)" disabled>+</button>
+    </div>
+  </div>
+</div>
+
+
+
+  
+  
+  <div class="container">
+  <input type="radio" class="radio-btn" id="radio2" data-name="Badam Shake" onclick="updateOrderSummary('https://github.com/healthymartshop/go/raw/main/badam1.jpg', 'Badam Shake', 990, 1990)">
+  <img src="https://github.com/healthymartshop/go/raw/main/badam1.jpg" alt="Product Image" class="product-img">
+  <div class="product-info">
+    <span class="product-name">Badam Shake</span>
+    <span class="product-price">৳990.00</span>
+    <span class="off-price">৳1990.00</span>
+    <div>      
+      <button class="quantity-btn" onclick="decrementQuantity(event)" disabled>-</button>
+      <span class="quantity" disabled>1</span>
+      <button class="quantity-btn" onclick="incrementQuantity(event)" disabled>+</button>
+    </div>
+  </div>
+</div>
+
+  
+     
+  <h4 style="text-align: center; font-size: 18px; padding: 0 10px;"> সঠিক তথ্য দিয়ে ফর্মটি পুরন করুন। (অগ্রিম ১ টাকাও পেমেন্ট করতে হবে না। প্রোডাক্ট হাতে পেয়ে টাকা পরিশোধ করুন।)</h4>
+      
+        <h4 style="text-align: center; font-size: 17px; padding: 0 10px;"> ডেলিভারি চার্জ সম্পুর্ন ফ্রী  </h4>
+  
+  <input type="text" name="fullName" placeholder="Full Name" required><br>
+  <input type="tel" name="phoneNumber" placeholder="Phone Number" required><br>
+  <input type="text" name="district" placeholder="District" required><br>
+  <input type="text" name="thana" placeholder="Thana" required><br>
+  <input type="text" name="address" placeholder="Address" required><br>
+  <input type="hidden" name="productName" id="productName">
+  <input type="hidden" name="quantity" id="quantity">
+  <input type="hidden" name="totalPrice" id="totalPrice">
+
+  <!-- Order Summary -->
+  <div class="order-summary">
+    <h2>Order Summary</h2>
+    <div id="product-info"></div>
+    
+    <span class="total-price">Total: ৳0.00</span>
+    
+<span class="shipping-fee" style="margin-top: 10px;"></span>
+
+    
+    
+    
+      </div>
+  
+  <!-- Place Order button -->
+ <!-- Place Order button -->
+<button class="place-order-btn" type="button" onclick="submitOrder()">Place Order</button>
+
+</form>
+  
+  
+  
+  
+  <div class="custom-div"></div>
+
+<style>
+.custom-div {
+    width: 300px;
+    height: 2px;
+    border-top: 6px solid black; /* First line color */
+    border-bottom: 3px solid gray; /* Second line color */
+    margin: 50px auto 50px; /* 50px top margin, auto for centering, 30px bottom margin */
+}
+</style>
+
+  
+
+  <style>
+  
+
+.shipping-item {
+  border:2px solid gray:
+  width: 250px;
+  height: 100px;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon {
+  font-size: 46px;
+  margin-right: 20px;
+  color: black; 
+}
+
+
+.shipping-label {
+  font-size: 20px;
+}
+
+.shipping-item .shipping-label {
+  font-size: 20px;
+  font-weight: bold; /* Make the text bold */
+  color: black; /* Set the text color to green */
+}
+  
+  
+/* Transition for color change */
+.icon i {
+  transition: color 0.3s ease-in-out;
+}
+
+/* Change color of the icon when the shipping item is active */
+.shipping-item:active .icon i {
+  color: limegreen;
+}
+
+/* Zoom effect on tap */
+.shipping-item:active {
+  transform: scale(1.2);
+}
+
+
+.cash-delivery-item {
+  border:2px solid gray:
+  width: 250px;
+  height: 100px;
+  margin: 20px auto; /* Adjust margin as needed */
+  background-color: gray ;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cash-delivery-item .icon {
+  font-size: 46px;
+  margin-right: 20px;
+  color:white ; 
+}
+
+.cash-delivery-item .cash-delivery-label {
+  font-size: 20px;
+}
+
+.cash-delivery-item:active {
+  transform: scale(1.2); /* Zoom effect on tap */
+}
+
+.cash-delivery-item:active .icon i {
+  color: limegreen; /* Change color on tap */
+}
+
+  .cash-delivery-item .cash-delivery-label {
+  font-size: 20px;
+  font-weight: bold; /* Make the text bold */
+  color: white; /* Set the text color to red */
+}
+
+  
+
+
+footer {
+  border-radius:30px;
+  margin-bottom:0px;
+  background-color: black;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  color: white;
+  position:flex;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: gray;
+  text-align: center;
+}
+  
+  </style>
+
+
+
+
+  
+  <div class="shipping-item">
+  <span class="icon"><i class="fas fa-truck"></i></span>
+  <span class="shipping-label">Free Shipping</span>
+</div>
+
+
+
+<div class="cash-delivery-item" onclick="zoom()">
+  <span class="icon"><i class="fas fa-money-bill"></i></span>
+  <span class="cash-delivery-label">Cash on Delivery</span>
+</div>
+
+
+  
+  <div id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p>Email: healthymart.info.bd@gmail.com</p>
+            <p>Phone: +8801776762354</p>
+            <p></p>
+        </div>
+    </div>
+<dive>
+  
+  
+  <footer style=";">
+    &copy; 2024 HEALTHY MART SHOP BD
+</footer>
+
+  
+<script>
+// JavaScript code for product boxes
+var shippingFeeAdded = false; // Flag to track whether shipping fee has been added
+
+  
+  
+  function updateOrderSummary(imageSrc, productName, regularPrice, discountedPrice) {
+    var productInfoDiv = document.getElementById('product-info');
+    var existingProduct = productInfoDiv.querySelector(`[data-name="${productName}"]`);
+    if (existingProduct) {
+        // Update quantity if the product already exists in the summary
+        var quantitySpan = existingProduct.querySelector('.order-summary-product-quantity');
+        var currentQuantity = parseInt(quantitySpan.textContent);
+        quantitySpan.textContent = (currentQuantity + 1) + '×';
+        return;
+    }
+
+    var newProduct = document.createElement('div');
+    newProduct.classList.add('order-summary-product');
+    newProduct.dataset.name = productName;
+    newProduct.innerHTML = `<img src="${imageSrc}" alt="Product Image" class="order-summary-product-img">
+                             <div class="order-summary-product-info">
+                                 <span class="order-summary-product-name">${productName}</span>
+                                 <span class="order-summary-product-price">৳${regularPrice}</span>
+                                 <span class="order-summary-product-total-price">৳${regularPrice}</span>
+                                 <span class="order-summary-product-quantity">1×</span>
+                                 <span class="order-summary-product-remove" onclick="removeProduct(this)">❌</span>
+                             </div>`;
+
+    productInfoDiv.appendChild(newProduct);
+    updateTotalPrice(regularPrice);
+
+    // Enable quantity buttons for the selected product box
+    var selectedProductBox = document.querySelector(`input[type="radio"][data-name="${productName}"]`).parentElement;
+    var quantityButtons = selectedProductBox.querySelectorAll('.quantity-btn');
+    quantityButtons.forEach(button => {
+        button.removeAttribute('disabled');
+    });
+
+    // Show the order summary
+    showOrderSummary();
+}
+
+
+
+
+  
+  function removeProduct(button) {
+    var productEntry = button.parentElement.parentElement;
+    productEntry.remove();
+    updateTotalPrice(-parseFloat(productEntry.querySelector('.order-summary-product-total-price').textContent.substring(1))); // Remove '৳' symbol before parsing
+    var productName = productEntry.dataset.name;
+    var radio = document.querySelector(`input[type="radio"][data-name="${productName}"]`);
+    if (radio) {
+        radio.checked = false;
+    }
+
+    // Reset quantity to 1 on the product box
+    var quantitySpan = productEntry.querySelector('.quantity');
+    if (quantitySpan) {
+        quantitySpan.textContent = '1';
+    } else {
+        // If quantity span is not found, find the corresponding product box and set its quantity to 1
+        var productBox = document.querySelector(`input[type="radio"][data-name="${productName}"]`).parentElement.querySelector('.quantity');
+        if (productBox) {
+            productBox.textContent = '1';
+        }
+    }
+
+    // Check all product boxes and disable quantity buttons for products not in the order summary
+    var productBoxes = document.querySelectorAll('.container');
+    productBoxes.forEach(box => {
+        var boxProductName = box.querySelector('.product-name').textContent.trim();
+        if (!document.querySelector(`.order-summary-product[data-name="${boxProductName}"]`)) {
+            // If the product is not in the order summary, disable its quantity buttons
+            var quantityButtons = box.querySelectorAll('.quantity-btn');
+            quantityButtons.forEach(button => {
+                button.setAttribute('disabled', 'disabled');
+            });
+        }
+    });
+
+    // Check if order summary is empty
+    var productInfoDiv = document.getElementById('product-info');
+    if (!productInfoDiv.hasChildNodes()) {
+        var totalPriceSpan = document.querySelector('.total-price');
+        totalPriceSpan.textContent = 'Total: ৳0.00';
+        shippingFeeAdded = false; // Reset the shipping fee flag when summary is empty
+        var shippingFeeSpan = document.querySelector('.shipping-fee');
+        if (shippingFeeSpan) {
+            shippingFeeSpan.remove(); // Remove shipping fee span if total price is 0
+        }
+    }
+}
+
+  
+
+  
+  
+function updateTotalPrice() {
+    var totalPriceSpan = document.querySelector('.total-price');
+    var productTotalPrices = document.querySelectorAll('.order-summary-product-total-price');
+    var totalProductPrice = 0;
+
+    // Calculate total product price
+    productTotalPrices.forEach(function(product) {
+        totalProductPrice += parseFloat(product.textContent.substring(1)); // Remove '৳' symbol before parsing
+    });
+
+    var grandTotal = totalProductPrice + 0.00; // Add shipping fee
+
+    // Update total price
+    totalPriceSpan.textContent = 'Total: ৳' + grandTotal.toFixed(2);
+
+    // Remove existing shipping fee text if it exists
+    var shippingFeeText = document.querySelector('.shipping-fee');
+    if (shippingFeeText) {
+        shippingFeeText.remove();
+    }
+
+    // Append shipping fee text to order summary
+    var newShippingFeeText = document.createElement('span');
+    newShippingFeeText.classList.add('shipping-fee');
+    newShippingFeeText.textContent = 'Free Shipping: ৳0.00';
+    totalPriceSpan.parentNode.insertBefore(newShippingFeeText, totalPriceSpan.nextSibling);
+}
+
+
+
+
+
+  
+  
+  
+  
+
+function showOrderSummary() {
+    var orderSummary = document.querySelector('.order-summary');
+    orderSummary.style.display = 'block';
+}
+
+
+  
+  
+  
+  
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+function openModal(message) {
+  document.getElementById("modal-message").innerHTML = message;
+  modal.style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "none";
+}
+
+
+  
+  
+  
+  
+  
+  
+  
+  function incrementQuantity(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    var quantitySpan = event.target.parentElement.querySelector('.quantity');
+    var currentQuantity = parseInt(quantitySpan.textContent);
+    quantitySpan.textContent = currentQuantity + 1;
+    updateOrderSummaryFromQuantityChange(event.target.parentElement.parentElement);
+}
+
+function decrementQuantity(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    var quantitySpan = event.target.parentElement.querySelector('.quantity');
+    var currentQuantity = parseInt(quantitySpan.textContent);
+    if (currentQuantity > 1) {
+        quantitySpan.textContent = currentQuantity - 1;
+        updateOrderSummaryFromQuantityChange(event.target.parentElement.parentElement);
+    }
+}
+
+function updateOrderSummaryFromQuantityChange(productBox) {
+    var productName = productBox.querySelector('.product-name').textContent;
+    var productPrice = parseFloat(productBox.querySelector('.product-price').textContent.substring(1)); // Remove '৳' symbol before parsing
+    var quantity = parseInt(productBox.querySelector('.quantity').textContent);
+    var totalPrice = productPrice * quantity;
+
+    var orderSummaryProduct = document.querySelector(`.order-summary-product[data-name="${productName}"]`);
+    if (orderSummaryProduct) {
+        var orderSummaryPriceSpan = orderSummaryProduct.querySelector('.order-summary-product-total-price');
+        var orderSummaryQuantitySpan = orderSummaryProduct.querySelector('.order-summary-product-quantity');
+
+        orderSummaryPriceSpan.textContent = '৳' + totalPrice.toFixed(2);
+        orderSummaryQuantitySpan.textContent = quantity + '×';
+    } else {
+        updateOrderSummary(productBox.querySelector('.product-img').src, productName, productPrice, productPrice);
+    }
+
+    updateTotalPrice(totalPrice - productPrice); // Update total price difference
+}
+
+  
+  
+  
+  
+</script>
+  
+  <script>
+// Function to update hidden input fields with product data
+function updateHiddenFields(productName, quantity, totalPrice) {
+    document.getElementById("productName").value = productName;
+    document.getElementById("quantity").value = quantity;
+    document.getElementById("totalPrice").value = totalPrice;
+}
+
+
+</script>
+  
+  
+  <script>
+
+
+function submitOrder() {
+    // Check if any product has been selected
+    var selectedProduct = document.querySelector('input[type="radio"]:checked');
+    if (!selectedProduct) {
+        openModal("Please select a product before placing the order.");
+        return; // Exit function if no product is selected
+    }
+
+    // Check if all required fields are filled out
+    var requiredFields = document.querySelectorAll('input[required]');
+    for (var i = 0; i < requiredFields.length; i++) {
+        if (requiredFields[i].value.trim() === '') {
+            openModal("Please fill out all required fields.");
+            return; // Exit function if any required field is empty
+        }
+    }
+
+    // Display loading spinner and change button text
+    var placeOrderButton = document.querySelector('.place-order-btn');
+    placeOrderButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Order Placing...';
+    placeOrderButton.disabled = true; // Disable button to prevent multiple submissions
+
+    // Prepare form data
+    var formData = new FormData();
+    
+    // Get all product entries in the order summary
+    var productEntries = document.querySelectorAll('.order-summary-product');
+
+    // Initialize arrays to store product names, quantities, and total prices
+    var productNames = [];
+    var quantities = [];
+    var totalPrices = [];
+
+    // Iterate over product entries to collect product data
+    productEntries.forEach(function(productEntry) {
+        var productName = productEntry.querySelector('.order-summary-product-name').textContent;
+        var quantity = parseInt(productEntry.querySelector('.order-summary-product-quantity').textContent);
+        var totalPrice = parseFloat(productEntry.querySelector('.order-summary-product-total-price').textContent.substring(1)); // Remove '৳' symbol before parsing
+
+        // Add product data to respective arrays
+        productNames.push(productName);
+        quantities.push(quantity);
+        totalPrices.push(totalPrice);
+    });
+
+    // Calculate total price including shipping fee
+    var totalPriceWithShipping = totalPrices.reduce((a, b) => a + b, 0) + 0.00; // Add shipping fee of ৳0.00
+
+    // Append product data to form data
+    formData.append('productName', productNames.join(", "));
+    formData.append('quantity', quantities.join(", "));
+    formData.append('totalPrice', totalPriceWithShipping.toFixed(2));
+
+    // Append required input details to form data
+    formData.append('fullName', document.querySelector('input[name="fullName"]').value);
+    formData.append('phoneNumber', document.querySelector('input[name="phoneNumber"]').value);
+    formData.append('district', document.querySelector('input[name="district"]').value);
+    formData.append('thana', document.querySelector('input[name="thana"]').value);
+    formData.append('address', document.querySelector('input[name="address"]').value);
+
+    // Send form data via AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://script.google.com/macros/s/AKfycbwcHRP3VXrX6SCaBzKdUWDoPQGfl6GzW81X3f21akB9CsxWlF_-DvpSwbxR5g6Fsj_g/exec', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Success: show confirmation message
+            openModal("ধন্যবাদ! অর্ডারটি প্লেস করার জন্য। খুব তারাতারি আমাদের একজন প্রতিনিধি আপনার সাথে যোগাযোগ করে আপনার অর্ডারটি কনফার্ম করবে।");
+        } else {
+            // Error: show error message
+            openModal("Error placing the order. Please try again later.");
+        }
+        // Reset button text and enable button
+        placeOrderButton.innerHTML = 'Place Order';
+        placeOrderButton.disabled = false;
+    };
+    xhr.onerror = function() {
+        // Error: show error message
+        openModal("Error placing the order. Please try again later.");
+        // Reset button text and enable button
+        placeOrderButton.innerHTML = 'Place Order';
+        placeOrderButton.disabled = false;
+    };
+    xhr.send(formData);
+
+    // Prevent default form submission behavior and the subsequent redirect
+    return false;
+}
+
+  
+ 
+// Function to close the modal and reload the page if the order was placed successfully
+function closeModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "none";
+  
+  // Check if the success message is displayed before reloading the page
+  var successMessage = document.getElementById("modal-message").textContent;
+  if (successMessage === "ধন্যবাদ! অর্ডারটি প্লেস করার জন্য। খুব তারাতারি আমাদের একজন প্রতিনিধি আপনার সাথে যোগাযোগ করে আপনার অর্ডারটি কনফার্ম করবে।") {
+    location.reload(); // Reload the page
+  }
+}
+
+
+ document.addEventListener('DOMContentLoaded', function() {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(function(question) {
+            question.addEventListener('click', function() {
+                const answer = question.nextElementSibling;
+                if (answer.classList.contains('show')) {
+                    // Close the answer slowly
+                    answer.style.transition = 'max-height 0.5s ease, opacity 0.5s ease'; // Adjusted closing animation speed to 0.5 seconds
+                    answer.style.maxHeight = '0';
+                    answer.style.opacity = '0';
+                    answer.classList.remove('show');
+                } else {
+                    // Hide all other answers before showing the current one
+                    faqQuestions.forEach(function(q) {
+                        const ans = q.nextElementSibling;
+                        if (ans !== answer && ans.classList.contains('show')) {
+                            ans.style.transition = 'max-height 0.5s ease, opacity 0.5s ease'; // Adjusted closing animation speed to 0.5 seconds
+                            ans.style.maxHeight = '0';
+                            ans.style.opacity = '0';
+                            ans.classList.remove('show');
+                        }
+                    });
+                    // Open the answer slowly
+                    answer.style.transition = 'max-height 2s ease, opacity 2s ease'; // Adjusted opening animation speed to 2 seconds
+                    answer.style.maxHeight = '500px'; // Adjust the max height according to your content
+                    answer.style.opacity = '1';
+                    answer.classList.add('show');
+                }
+            });
+        });
+    });
+  
+
+
+let slideIndex = 0;
+let intervalId;
+
+showSlide(slideIndex);
+
+function prevSlide() {
+  showSlide(slideIndex -= 1);
+  restartInterval();
+}
+
+function nextSlide() {
+  showSlide(slideIndex += 1);
+  restartInterval();
+}
+
+function showSlide(n) {
+  const slides = document.querySelectorAll('.slider img');
+  if (n >= slides.length) {slideIndex = 0}
+  if (n < 0) {slideIndex = slides.length - 1}
+  slides.forEach(slide => slide.style.display = "none");
+  slides[slideIndex].style.display = "block";
+}
+
+function restartInterval() {
+  clearInterval(intervalId);
+  intervalId = setInterval(() => {
+    nextSlide();
+  }, 2000);
+}
+
+// Event listeners for touchstart and touchend
+const slider = document.querySelector('.slider');
+slider.addEventListener('touchstart', () => {
+  clearInterval(intervalId);
+});
+
+slider.addEventListener('touchend', () => {
+  restartInterval();
+});
+
+// Initial start of interval
+restartInterval();
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const buyNowButton = document.querySelector('.buy-now');
+    const targetForm = document.getElementById('orderForm');
+    
+    buyNowButton.addEventListener('click', function() {
+        targetForm.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+
+</script>
+
+  
+<script>
+
+
+function changeImage(thumbnail) {
+  var mainImage = document.getElementById('mainImage');
+  var tempSrc = mainImage.src;
+  mainImage.style.opacity = '0'; // Fade out the main image
+  thumbnail.style.opacity = '0'; // Fade out the thumbnail
+  setTimeout(function() {
+    mainImage.src = thumbnail.src;
+    thumbnail.src = tempSrc;
+    mainImage.style.opacity = '1'; // Fade in the new main image
+    thumbnail.style.opacity = '1'; // Fade in the new thumbnail
+  }, 300); // Wait for the fade out effect (0.3s)
+}
+
+    window.onload = function() {
+        var productOptions = document.querySelectorAll('.product-option input[type="radio"]');
+        if (productOptions.length === 1) {
+            productOptions[0].checked = true;
+        }
+    };
+
+
+// Get all containers
+const containers = document.querySelectorAll('.container');
+
+// Check if theres only one container
+if (containers.length === 1) {
+  // Get the radio button in the single container
+  const radioBtn = containers[0].querySelector('.radio-btn');
+  // Check the radio button
+  radioBtn.checked = true;
+}
+
+
+</script>
+
+<script>
+  function toggleMenu() {
+    var menu = document.getElementById('menu');
+    var overlay = document.getElementById('overlay');
+    var menuIcon = document.querySelector('.menu-icon');
+    var closeIcon = document.querySelector('.close-icon');
+
+    menu.classList.toggle('active');
+    overlay.style.display = menu.classList.contains('active') ? 'block' : 'none';
+    menuIcon.style.display = menu.classList.contains('active') ? 'none' : 'block';
+    closeIcon.style.display = menu.classList.contains('active') ? 'block' : 'none';
+  }
+</script>
+  
+</body>
+</html>
